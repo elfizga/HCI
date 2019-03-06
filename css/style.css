@@ -187,6 +187,7 @@ button:focus {
 ============================================================================================ */
 .home_banner_area {
   position: relative;
+  bottom:50px;
   z-index: 1;
   min-height: 780px;}
   .home_banner_area .banner_inner {
@@ -275,6 +276,7 @@ button:focus {
   min-height: 300px; }
   .banner_area .banner_inner {
     position: relative;
+    bottom: 50px;
     overflow: hidden;
     width: 100%;
     min-height: 300px;

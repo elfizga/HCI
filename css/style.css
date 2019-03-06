@@ -961,8 +961,187 @@ button:focus {
     margin-top: -17px;
     font-size: 13px;
     right: 22px; }
+
 .reservation_form .form-group:last-child {
   text-align: center; }
+  .tsk-contact-info {
+    margin-bottom: 30px;
+    border-radius: 10px; }
+  
+  .tsk-contact-info .icon-bar {
+    margin-bottom: 25px; }
+  
+  .tsk-contact-info .icon-bar i {
+    color: #4dbf1c;
+    height: 84px;
+    width: 84px;
+    line-height: 82px;
+    font-size: 34px;
+    text-align: center;
+    background: -webkit-linear-gradient(-30deg, #256907 0%, 100%);
+    border-radius: 50%;
+    text-indent: 2px; }
+  
+  .tsk-contact-info .contact-info-item {
+    text-align: center;
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+    box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+    padding: 40px 40px 38px; }
+  
+  .tsk-contact-info .info-details h5 {
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 15px; }
+  
+  .tsk-contact-info .info-details a,
+  .tsk-contact-info .info-details p {
+    color: rgba(5, 87, 12, 0.6);
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+  
+  .tsk-contact-info .info-details p {
+    font-size: 15px;
+    margin-bottom: 0;
+    color: rgba(5, 87, 12, 0.6); }
+  
+  .tsk-contact-info .info-details a:hover {
+    color: #4dbf1c; }
+    .contact {
+      margin-top: -300px;
+      padding: 0px 0 120px 0; }
+      .contact.login-page-content {
+        padding: 120px 0 120px 0; }
+      .contact.register-content-area {
+        padding: 120px 0 120px 0; }
+      .contact .section-title {
+        margin-bottom: 53px; }
+        .contact .section-title h2 {
+          margin-bottom: 22px; }
+        .contact .section-title p {
+          color: rgba(5, 33, 87, 0.6); }
+      .contact .login-page-outer {
+        background: #fff;
+        -webkit-box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        padding: 53px 60px 60px 60px;
+        position: relative;
+        margin-top: 120px;
+        border-radius: 10px;
+        z-index: 2; }
+      .contact .register-page-innter-wrapper {
+        background: #fff;
+        -webkit-box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        padding: 60px 60px 60px 60px;
+        position: relative;
+        margin-top: 180px;
+        margin-bottom: -50px;
+        border-radius: 10px;
+        z-index: 2; }
+      .contact .contact-form-outer {
+        background: #fff;
+        -webkit-box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        box-shadow: 0px 0px 250px 0px rgba(69, 81, 100, 0.1);
+        padding: 70px 60px 80px 60px;
+        position: relative;
+        margin-top: 300px;
+        border-radius: 10px;
+        z-index: 2; }
+      .contact .contact-form {
+        /* Base for label styling */
+        /* checkbox aspect */
+        /* checked mark aspect */
+        /* checked mark aspect changes */ }
+        .contact .contact-form .form-group {
+          margin-bottom: 25px; }
+          .contact .contact-form .form-group.checkbox {
+            height: 100%; }
+            .contact .contact-form .form-group.checkbox .form-check {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+              flex-direction: column;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              height: 100%;
+              margin: 2px 0 0; }
+          .contact .contact-form .form-group.fieldset {
+            margin: 13px 0 21px; }
+          .contact .contact-form .form-group label {
+            color: #3f4b6e;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 13px; }
+            .contact .contact-form .form-group label .requred {
+              color: #4dbf1c; }
+          .contact .contact-form .form-group input.form-control {
+            height: 60px;
+            border: none;
+            background: #f3f6ff;
+            color: #3f4b6e;
+            font-size: 14px;
+            padding: 10px 30px;
+            font-weight: 500;
+            width: 100%; }
+            .contact .contact-form .form-group input.form-control::-webkit-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group input.form-control:-ms-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group input.form-control::-ms-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group input.form-control::placeholder {
+              opacity: .8; }
+          .contact .contact-form .form-group textarea {
+            height: 160px;
+            border: none;
+            background: #f3f6ff;
+            color: #3f4b6e;
+            font-size: 14px;
+            padding: 30px 30px;
+            font-weight: 500; }
+            .contact .contact-form .form-group textarea::-webkit-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group textarea:-ms-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group textarea::-ms-input-placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group textarea::placeholder {
+              opacity: .8; }
+            .contact .contact-form .form-group textarea:focus {
+              -webkit-box-shadow: none;
+              box-shadow: none; }
+              .contact .contact-form button {
+                height: 60px;
+                width: 160px;
+                background: -webkit-linear-gradient(-30deg, #2f4b03 0%, #4dbf1c 100%);
+                color: #fff;
+                border-radius: 50px;
+                border: none;
+                cursor: pointer;
+                -webkit-transition: all 0.3s ease-in;
+                -moz-transition: all 0.3s ease-in;
+                -o-transition: all 0.3s ease-in;
+                transition: all 0.3s ease-in;
+                position: relative;
+                left: 50%;
+                margin-left: -80px;
+                margin-top: 15px;
+                outline: none; }
+                .contact .contact-form button:hover {
+                  background: -webkit-linear-gradient(-30deg, #4dbf1c 0%, #2f4b03 100%);
+                  color: #fff; }
+                .contact .contact-form button.submit-button {
+                  right: 0;
+                  margin-left: 80px; }    
 
 /* End Reservation Form Area css
 ============================================================================================ */
@@ -970,6 +1149,8 @@ button:focus {
 .mapBox {
   height: 420px;
   margin-bottom: 80px; }
+  .address-area {
+    padding: 120px 0 90px; }
 
 .contact_info .info_item {
   position: relative;

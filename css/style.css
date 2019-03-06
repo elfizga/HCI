@@ -31,8 +31,8 @@ button:focus {
   box-shadow: none; }
 
 .p_120 {
-  padding-top: 120px;
-  padding-bottom: 120px; }
+  padding-top: 100px;
+  padding-bottom: 50px; }
 
 .pad_top {
   padding-top: 120px; }
@@ -42,7 +42,7 @@ button:focus {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px; } }
+    max-width: 1190px; } }
 
 @media (min-width: 1620px) {
   .box_1620 {
@@ -2851,7 +2851,7 @@ h6 {
   .single-footer-widget .instafeed li {
     margin: 5px; }
 .single-footer-widget .subscribe_form {
-  padding-top: 25px; }
+  padding-top: 20px; }
 .single-footer-widget .input-group {
   display: block !important; }
 .single-footer-widget input {
@@ -2981,13 +2981,13 @@ h6 {
   font-weight: bold;
   font-family: "Playfair Display", serif;
   color: #fff;
-  margin-bottom: 28px; }
+  margin-bottom: 25px; }
 
 .border_line {
   width: 100%;
   height: 1px;
   background: #333333;
-  margin-top: 30px; }
+  margin-top: 20px; }
 
 .footer-bottom {
   padding-top: 85px; }

@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Courses</title>
@@ -20,7 +19,6 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
-        
         <!--================Header Menu Area =================-->
         <header class="header_area">
 				<div class="main_menu">
@@ -49,7 +47,6 @@
             </div>
         </header>
 			<!--================Header Menu Area =================-->
-        
         <!--================Home Banner Area =================-->
         <section class="banner_area">
             <div class="banner_inner d-flex align-items-center">
@@ -66,7 +63,6 @@
             </div>
         </section>
         <!--================End Home Banner Area =================-->
-        
         <!--================Courses Area =================-->
         <section class="courses_area p_120">
         	<div class="container">
@@ -75,97 +71,43 @@
         			<h2> Our Courses</h2>
 				</div>
 				<div>
-						<aside class="single_sidebar_widget search_widget">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search Courses ..">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-									</span>
-								</div>
-								<div class="br"></div>
-						</aside> <br>
+					<aside class="single_sidebar_widget search_widget">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search Courses ..">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+							</span>
+						</div>
+						<div class="br"></div>
+					</aside> <br>
 				</div>
         		<div class="row courses_inner">
         			<div class="col-lg-12">
 							<div class="row gallery-item">
-									<div class="col-md-4">
-										<a href="img/elements/g1.jpg" class="img-gal">
-											<div class="single-gallery-image" style="background: url(img/elements/g1.jpg);">
-												<div class="hover_text">
-														<a class="cat" href="#">300$</a>
-														<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-														<ul class="list">
-															<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-															<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-														</ul>
-													</div>
-											</div></a>
-									</div>
-									<div class="col-md-4">
-										<a href="img/elements/g2.jpg" class="img-gal">
-											<div class="single-gallery-image" style="background: url(img/elements/g2.jpg);">
-														<div class="hover_text">
-															<a class="cat" href="#">250$</a>
-															<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-															<ul class="list">
-																<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-																<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-															</ul>
-														</div>
-											</div></a>
-									</div>
-									<div class="col-md-4">
-										<a href="img/elements/g3.jpg" class="img-gal">
-											<div class="single-gallery-image" style="background: url(img/elements/g3.jpg);">
-														<div class="hover_text">
-															<a class="cat" href="#">223$</a>
-															<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-															<ul class="list">
-																<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-																<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-															</ul>
-														</div>
-											</div></a>
-									</div>
-									<div class="col-md-4">
-										<a href="img/elements/g6.jpg" class="img-gal">
-											<div class="single-gallery-image" style="background: url(img/elements/g6.jpg);">
-												<div class="hover_text">
-														<a class="cat" href="#">250$</a>
-														<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-														<ul class="list">
-															<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-															<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-														</ul>
-													</div>
-											</div></a>
-									</div>
-									<div class="col-md-4">
-										<a href="img/elements/g7.jpg" class="img-gal">
-											<div class="single-gallery-image" style="background: url(img/elements/g7.jpg);">
-												<div class="hover_text">
-														<a class="cat" href="#">250$</a>
-														<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-														<ul class="list">
-															<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-															<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-														</ul>
-													</div>
-											</div></a>
-									</div>
+							<?php 
+                        $sql = "
+                            SELECT 
+                            courses.ID AS courseID, courses.name , courses.price , trainer.fullName 
+                            FROM courses 
+                            INNER JOIN trainer ON courses.trainerID = trainer.ID
+							ORDER BY courseID DESC ";
+                        global $con;
+                        $query = $con->prepare($sql);
+                        $query->execute();
+                        $results = $query->fetchAll();
+                        foreach($results as $result) { ?>
 									<div class="col-md-4">
 										<a href="img/elements/g8.jpg" class="img-gal">
 											<div class="single-gallery-image" style="background: url(img/elements/g8.jpg);">
 												<div class="hover_text">
-														<a class="cat" href="#">223$</a>
-														<a href="course-details.html"><h4>Japanease Language Class</h4></a>
-														<ul class="list">
-															<li><a href="#"><i class="lnr lnr-users"></i> 355</a></li>
-															<li><a href="#"><i class="lnr lnr-user"></i> T. Robert</a></li>
-														</ul>
-													</div>
+													<a class="cat" href="course-details.php?courseID=<?php echo $result['courseID'];?>"><?php echo $result['price'];?></a>
+													<a href="course-details.php?courseID=<?php echo $result['courseID'];?>"><h4><?php echo $result['name'];?></h4></a>
+													<ul class="list">
+													<li><a href="course-details.php?courseID=<?php echo $result['courseID'];?>"><i class="lnr lnr-user"></i> T. <?php echo $result['fullName'];?></a></li></ul>
+												</div>
 										</div></a>
 								  </div>
+						<?php } ?>
 							</div>
         			</div>
         		</div>
@@ -174,10 +116,8 @@
         <!--================End Courses Area =================-->
         <br><br>
         <!--================ start footer Area  =================-->	
-        <?php
-	   include 'includes/footer.php';
-	   ?>
-			<!--================ End footer Area  =================--> 
+        <?php include 'includes/footer.php'; ?>
+		<!--================ End footer Area  =================--> 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.3.1.min.js"></script>

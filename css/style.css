@@ -3203,3 +3203,5 @@ h6 {
 
 /*# sourceMappingURL=style.css.map */
 .mail{color: #4dbf1c; }
+.hide_alert{display: none ;}
+.show_alert{display: block;}

@@ -19,7 +19,25 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
-        
+    <?php
+$isError = false ;
+$message ="";
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	$name=$_POST["InputName"];
+	$msg=$_POST["exampleFormControlTextarea1"];
+	$subject=$_POST["InputSubject"];
+	$email=$_POST["InputMail"];
+	$mailheader = "From: $email \r\n";
+	$myEmail = "info@massader.org";
+	$body = "From: $name \n Message: $msg ";
+
+if ($isError == false ){
+	mail($myEmail , $subject , $body , $mailheader) or die("Error!") ;
+	$name = "" ;
+	$msg = "" ;
+	$email= "" ;
+	$success="<div class='alert alert-success'> Thank you ! </div>" ; }}
+?>  
        <!--================Header Menu Area =================-->
        <header class="header_area">
             <div class="main_menu">
@@ -131,31 +149,34 @@
                                                 </div>
                                                 <div class="row">
                                                         <div class="col-xl-12 col-lg-12">
-                                                            <form class="contact-form">
+                                                            <form class="contact-form" action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" >
                                                                 <div class="row">
                                                                     <div class="col-xl-6 col-lg-6">
+                                                                        <?php if (isset($success)) {
+                                                                        echo $success ;
+                                                                        } ?>
                                                                         <div class="form-group">
-                                                                            <label for="InputName">Name<span class="requred">*</span></label>
-                                                                            <input type="text" class="form-control" id="InputName" placeholder="Enter Your Name" required="">
+                                                                            <label for="InputName">Name<span>*</span></label>
+                                                                            <input type="text" class="form-control" id="InputName" name="InputName" placeholder="Enter Your Name" required="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-xl-6 col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label for="InputMail">E-mail<span class="requred">*</span></label>
-                                                                            <input type="email" class="form-control" id="InputMail" placeholder="Enter Your E-mail Address" required="">
+                                                                            <label for="InputMail">E-mail<span>*</span></label>
+                                                                            <input type="email" class="form-control" id="InputMail" name="InputMail" placeholder="Enter Your E-mail Address" required="">
                                                                         </div>
                                                                     </div>
                                                                    
                                                                     <div class="col-xl-12 col-lg-12">
                                                                         <div class="form-group">
                                                                             <label for="InputSubject">Subject<span class="requred">*</span></label>
-                                                                            <input type="text" class="form-control" id="InputSubject" placeholder="Enter Your Subject" required="">
+                                                                            <input type="text" class="form-control" id="InputSubject" name="InputSubject" placeholder="Enter Your Subject" required="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-xl-12 col-lg-12">
                                                                         <div class="form-group">
                                                                             <label for="exampleFormControlTextarea1">Meassage<span class="requred">*</span></label>
-                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Your Meassage" required=""></textarea>
+                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="exampleFormControlTextarea1" rows="3" placeholder="Enter Your Meassage" required=""></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-xl-12 col-lg-12">

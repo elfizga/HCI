@@ -181,14 +181,14 @@ foreach($items as $item) {
        var ths = $(this);
        var thId = $(".delrequest").data("id");
        Swal({
-        title: ' هل أنت متأكد ؟',
-        text: " لن تتمكن من استعادة هذا السجل ان قمت بالموافقة",
+        title: ' are you sure?',
+        text: " You can't get this record back once you hit yes",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: ' أجل , قم بالمسح !',
-        cancelButtonText: '  إغلاق '
+        confirmButtonText: ' yes delete this',
+        cancelButtonText: '  close '
         }).then((result) => {
         if (result.value) {
 
@@ -201,8 +201,8 @@ foreach($items as $item) {
          ths.parent("td").parent("tr").fadeOut(600, function(){
            ths.remove();
            Swal(
-            ' تم المسح !',
-            ' تم مسح السجل الذي قمت بإحتياره بنجاح',
+            'record deleted',
+            ' you have deleted this record successfully',
             'success' )
          });
         

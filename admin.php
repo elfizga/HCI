@@ -1,4 +1,8 @@
-<?php include "includes/connect.php"?>
+<?php include "includes/connect.php";
+if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
+    $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
+    
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,9 +19,12 @@
         <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
         <link rel="stylesheet" href="vendors/animate-css/animate.css">
         <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
+
         <!-- main css -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link href="css/sweetalert2.min.css" rel="stylesheet" />
+        
     </head>
     <body>
         
@@ -35,19 +42,24 @@
 							</button>
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-								<ul class="nav navbar-nav menu_nav ml-auto">
-									<li class="nav-item "><a class="nav-link" href="index.html">Home</a></li> 
-									<li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li> 
-									<li class="nav-item"><a class="nav-link" href="elements.html">Our Services</a></li>
-									<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-								</ul>
-							</div> 
-						</div>
-					</nav>
-				</div>
-			</header>
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li> 
+								<li class="nav-item"><a class="nav-link" href="elements.php">Our Services</a></li>
+								<li class="nav-item "><a class="nav-link" href="courses.php">Courses</a></li>
+								<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+								
+								
+								<li class="nav-item active"> <a class="nav-link" href="admin.php">Manage</a></li>
+                <li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
+							 </ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
 			<!--================Header Menu Area =================-->
+            
         
         <!--================Home Banner Area =================-->
         <section class="banner_area">
@@ -66,7 +78,66 @@
         </section>
         <!--================End Home Banner Area =================-->
     <!--================start manage Area =================-->
-    
+    <section class="about_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2> Manage All Courses</h2>
+        		</div>
+                <div class="asideButton">
+                <button type="button" class="btn btn-light" style="color:green;">Add Course</button>
+                </div>
+               <div>
+               <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"># ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Trainer</th>
+      <th scope="col">Price</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php 
+  if ($do == 'Manage') {
+                        $sql = "
+                            SELECT 
+                            courses.ID AS courseID, courses.name , courses.price , trainer.fullName , courses.duration,
+                            courses.startDate
+                            FROM courses 
+                            INNER JOIN trainer ON courses.trainerID = trainer.ID
+							ORDER BY courseID DESC ";
+                        global $con;
+                        $query = $con->prepare($sql);
+                        $query->execute();
+                        $items = $query->fetchAll();
+if (! empty($items)) {
+                        ?>
+ <?php
+foreach($items as $item) {
+   echo '<tr>';
+     echo '<th scope="row">'. $item['courseID'] .'</th>';
+     echo '<td>'. $item['name'] .'</td>';
+     echo '<td>'. $item['fullName'] .'</td>';
+     echo '<td>'. $item['price'] .'</td>';
+     echo '<td>'. $item['duration'] .'</td>';
+     echo '<td>'. $item['startDate'] .'</td>';
+     echo "<td><button type='button' class='delrequest btn  btn-link btn-sm' 
+     data-id='". $item['courseID'] ."'> <i class='lnr lnr-cross-circle' id='iconx'></i> </button> </td>";
+    echo '</tr>';
+}?>
+   
+  </tbody>
+</table>
+
+
+</div>
+
+    </div>
+    <?php }} ?> 
+    </section>
     <!--================end manage Area =================-->
             
        <!--================ start footer Area  =================-->	
@@ -92,5 +163,56 @@
         <script src="vendors/counter-up/jquery.counterup.js"></script>
         <script src="js/mail-script.js"></script>
         <script src="js/theme.js"></script>
+        <script src="js/sweetalert2.min.js"></script>
+        <script>
+   $(document).ready(function(){
+     $(".delrequest").click(function(){
+       var ths = $(this);
+       var thId = $(".delrequest").data("id");
+       Swal({
+        title: ' هل أنت متأكد ؟',
+        text: " لن تتمكن من استعادة هذا السجل ان قمت بالموافقة",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: ' أجل , قم بالمسح !',
+        cancelButtonText: '  إغلاق '
+        }).then((result) => {
+        if (result.value) {
+
+       $.ajax({
+         url: "delete.php",
+         data: {ID : thId},
+         type: 'POST'
+       })
+       .done(function(data){
+         ths.parent("td").parent("tr").fadeOut(600, function(){
+           ths.remove();
+           Swal(
+            ' تم المسح !',
+            ' تم مسح السجل الذي قمت بإحتياره بنجاح',
+            'success' )
+         });
+        
+       })
+       .fail(function(data){
+          alert("error");
+       });
+        }
+        })
+
+     });
+   });
+</script>
+<?php
+} else {
+
+  header('Location: index.php');
+  
+  exit();
+  }
+ob_end_flush(); // Release The Output
+?>
     </body>
 </html>

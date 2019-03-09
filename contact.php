@@ -56,10 +56,18 @@ if ($isError == false ){
 								<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li> 
 								<li class="nav-item"><a class="nav-link" href="elements.php">Our Services</a></li>
-								<li class="nav-item"><a class="nav-link" href="courses.php">Courses</a></li>
+								<li class="nav-item "><a class="nav-link" href="courses.php">Courses</a></li>
 								<li class="nav-item active"><a class="nav-link" href="contact.php">Contact Us</a></li>
+								<?php
+                                if(isset($_SESSION['userid']) && $_SESSION['userid'] > 0) { ?>
+									<li class="nav-item "> <a class="nav-link" href="admin.php">Manage</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li><?php
+                    } else { ?>
 								<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>
-							</ul>
+								 </ul>
+                                 <?php 
+                                        }
+                                    ?>
 						</div> 
 					</div>
             	</nav>

@@ -12,6 +12,17 @@ a {
     text-decoration: none;
     outline: none; }
 
+    #iconx{
+      position: relative;
+      left:20px;
+      
+    }
+
+    .asideButton{
+      position: relative;
+      bottom:100px;
+    }
+
 .row.m0 {
   margin: 0px; }
 

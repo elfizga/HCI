@@ -50,9 +50,18 @@
 								<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 								
 								
-								<li class="nav-item active"> <a class="nav-link" href="admin.php">Manage</a></li>
-                <li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
-							 </ul>
+                <?php
+                                if(isset($_SESSION['userid']) && $_SESSION['userid'] > 0) { ?>
+									<li class="nav-item "> <a class="nav-link" href="admin.php"> Manage</a></li>
+									<li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
+								 <?php
+                    } else { ?>
+								<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>
+								 </ul>
+								 <?php 
+                                        }
+                                    ?>
+                                    </ul>
 						</div> 
 					</div>
             	</nav>

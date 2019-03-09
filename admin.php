@@ -1,6 +1,6 @@
 <?php include "includes/connect.php";
-if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
-    $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
+
+   
     
 ?>
 <!doctype html>
@@ -92,6 +92,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
     <tr>
       <th scope="col"># ID</th>
       <th scope="col">Title</th>
+     
       <th scope="col">Trainer</th>
       <th scope="col">Price</th>
       <th scope="col">Duration</th>
@@ -101,11 +102,11 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
   </thead>
   <tbody>
   <?php 
-  if ($do == 'Manage') {
+  
                         $sql = "
                             SELECT 
                             courses.ID AS courseID, courses.name , courses.price , trainer.fullName , courses.duration,
-                            courses.startDate
+                            courses.startDate, courses.description , courses.objectives
                             FROM courses 
                             INNER JOIN trainer ON courses.trainerID = trainer.ID
 							ORDER BY courseID DESC ";
@@ -121,6 +122,7 @@ foreach($items as $item) {
      echo '<th scope="row">'. $item['courseID'] .'</th>';
      echo '<td>'. $item['name'] .'</td>';
      echo '<td>'. $item['fullName'] .'</td>';
+     
      echo '<td>'. $item['price'] .'</td>';
      echo '<td>'. $item['duration'] .'</td>';
      echo '<td>'. $item['startDate'] .'</td>';
@@ -136,7 +138,7 @@ foreach($items as $item) {
 </div>
 
     </div>
-    <?php }} ?> 
+    <?php } ?> 
     </section>
     <!--================end manage Area =================-->
             
@@ -205,14 +207,7 @@ foreach($items as $item) {
      });
    });
 </script>
-<?php
-} else {
 
-  header('Location: index.php');
-  
-  exit();
-  }
-ob_end_flush(); // Release The Output
-?>
+
     </body>
 </html>

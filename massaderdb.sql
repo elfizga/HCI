@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2019 at 08:12 AM
+-- Generation Time: Mar 09, 2019 at 08:11 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `massaderdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `ID` int(11) NOT NULL,
+  `username` varchar(70) NOT NULL,
+  `password` varchar(70) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`ID`, `username`, `password`) VALUES
+(1, 'Rima_rhaim', '123456789');
 
 -- --------------------------------------------------------
 
@@ -70,6 +89,12 @@ CREATE TABLE `trainer` (
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -91,6 +116,12 @@ ALTER TABLE `trainer`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`

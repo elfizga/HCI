@@ -65,17 +65,10 @@
             </div>
         </section>
         <!--================End Home Banner Area =================-->
-
-
     <!--================start manage Area =================-->
     
-
-
     <!--================end manage Area =================-->
-        
-       
-       
-        
+            
        <!--================ start footer Area  =================-->	
 	   <?php
 	   include 'includes/footer.php';

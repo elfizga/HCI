@@ -1,4 +1,4 @@
-<?php include "includes/connect.php"?>
+<?php include "includes/connect.php" ; ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -41,9 +41,7 @@
 								<li class="nav-item active"><a class="nav-link" href="elements.php">Our Services</a></li>
 								<li class="nav-item"><a class="nav-link" href="courses.php">Courses</a></li>
 								<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-								<?php if(is_null($_SESSION['userid']) && $_SESSION['userid'] > 0) { 
-								'<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>'
-								} ?>
+								<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>
 							</ul>
 						</div> 
 					</div>

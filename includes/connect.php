@@ -12,6 +12,7 @@
 try {
     $con = new PDO($servername , $username , $password , $option );
     $con->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+    
 }
 catch(PDOException $e){
     echo $e->getMessage();

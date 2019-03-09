@@ -35,18 +35,19 @@
 							</button>
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-								<ul class="nav navbar-nav menu_nav ml-auto">
-									<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-									<li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li> 
-									<li class="nav-item"><a class="nav-link" href="elements.html">Our Services</a></li>
-									<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-									<li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-								</ul>
-							</div> 
-						</div>
-					</nav>
-				</div>
-			</header>
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="about-us.php">About Us</a></li> 
+								<li class="nav-item"><a class="nav-link" href="elements.php">Our Services</a></li>
+								<li class="nav-item active"><a class="nav-link" href="courses.php">Courses</a></li>
+								<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+								<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
 			<!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->

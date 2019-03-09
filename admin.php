@@ -1,6 +1,6 @@
 <?php include "includes/connect.php";
-if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
-    $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
+
+   
     
 ?>
 <!doctype html>
@@ -50,9 +50,18 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
 								<li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
 								
 								
-								<li class="nav-item active"> <a class="nav-link" href="admin.php">Manage</a></li>
-                <li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
-							 </ul>
+                <?php
+                                if(isset($_SESSION['userid']) && $_SESSION['userid'] > 0) { ?>
+									<li class="nav-item "> <a class="nav-link" href="admin.php"> Manage</a></li>
+									<li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
+								 <?php
+                    } else { ?>
+								<li class="nav-item"> <a class="nav-link" href="login_admin.php"><i class="lnr lnr-enter" id ="enter"></i></a></li>
+								 </ul>
+								 <?php 
+                                        }
+                                    ?>
+                                    </ul>
 						</div> 
 					</div>
             	</nav>
@@ -92,6 +101,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
     <tr>
       <th scope="col"># ID</th>
       <th scope="col">Title</th>
+     
       <th scope="col">Trainer</th>
       <th scope="col">Price</th>
       <th scope="col">Duration</th>
@@ -101,11 +111,11 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] > 0) {
   </thead>
   <tbody>
   <?php 
-  if ($do == 'Manage') {
+  
                         $sql = "
                             SELECT 
                             courses.ID AS courseID, courses.name , courses.price , trainer.fullName , courses.duration,
-                            courses.startDate
+                            courses.startDate, courses.description , courses.objectives
                             FROM courses 
                             INNER JOIN trainer ON courses.trainerID = trainer.ID
 							ORDER BY courseID DESC ";
@@ -121,6 +131,7 @@ foreach($items as $item) {
      echo '<th scope="row">'. $item['courseID'] .'</th>';
      echo '<td>'. $item['name'] .'</td>';
      echo '<td>'. $item['fullName'] .'</td>';
+     
      echo '<td>'. $item['price'] .'</td>';
      echo '<td>'. $item['duration'] .'</td>';
      echo '<td>'. $item['startDate'] .'</td>';
@@ -136,7 +147,7 @@ foreach($items as $item) {
 </div>
 
     </div>
-    <?php }} ?> 
+    <?php } ?> 
     </section>
     <!--================end manage Area =================-->
             
@@ -170,14 +181,14 @@ foreach($items as $item) {
        var ths = $(this);
        var thId = $(".delrequest").data("id");
        Swal({
-        title: ' هل أنت متأكد ؟',
-        text: " لن تتمكن من استعادة هذا السجل ان قمت بالموافقة",
+        title: ' are you sure?',
+        text: " You can't get this record back once you hit yes",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: ' أجل , قم بالمسح !',
-        cancelButtonText: '  إغلاق '
+        confirmButtonText: ' yes delete this',
+        cancelButtonText: '  close '
         }).then((result) => {
         if (result.value) {
 
@@ -190,8 +201,8 @@ foreach($items as $item) {
          ths.parent("td").parent("tr").fadeOut(600, function(){
            ths.remove();
            Swal(
-            ' تم المسح !',
-            ' تم مسح السجل الذي قمت بإحتياره بنجاح',
+            'record deleted',
+            ' you have deleted this record successfully',
             'success' )
          });
         
@@ -205,14 +216,7 @@ foreach($items as $item) {
      });
    });
 </script>
-<?php
-} else {
 
-  header('Location: index.php');
-  
-  exit();
-  }
-ob_end_flush(); // Release The Output
-?>
+
     </body>
 </html>

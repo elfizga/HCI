@@ -44,7 +44,7 @@
 								
 								<?php
                                 if(isset($_SESSION['userid']) && $_SESSION['userid'] > 0) { ?>
-									<li class="nav-item "> <a class="nav-link" href="admin.php">Manage</a></li>
+									<li class="nav-item "> <a class="nav-link" href="admin.php"> Manage</a></li>
 									<li class="nav-item"> <a class="nav-link" href="logout.php"><i class="lnr lnr-exit" id ="enter"></i></a></li>
 								 <?php
                     } else { ?>

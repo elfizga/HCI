@@ -80,12 +80,26 @@
         <!--================Course Details Area =================-->
         <section class="course_details_area p_120">
         	<div class="container">
+					<?php  
+					if(isset($_GET['courseID'])){
+					$id=$_GET['courseID'];
+					$sql = " 
+					SELECT 
+                    courses.ID AS courseID, courses.name , courses.price , courses.duration , courses.startDate , trainer.fullName 
+                    FROM courses 
+                    INNER JOIN trainer ON courses.trainerID = trainer.ID
+					WHERE courses.ID = ? ";
+                    global $con;
+                    $query = $con->prepare($sql);
+                    $query->execute(array($id));
+                    $result = $query->fetch();
+                    ?>
         		<div class="row course_details_inner">
         			<div class="col-lg-8">
         				<div class="c_details_img">
         					<img class="img-fluid" src="img/courses/course-details.jpg" alt="">
 						</div>
-						<br> <h2>Course Title</h2> <br>
+						<br><h2><?php echo $result['name'] ; ?></h2> <br>
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item">
 								<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
@@ -114,10 +128,10 @@
 								<div class="comments-area">
 									<div class="c_details_list">
 											<ul class="list">
-												<li><a href="#">Trainer’s Name <span>George Mathews</span></a></li>
-												<li><a href="#">Course Fee <span> $230 </span></a></li>
-												<li><a href="#">Deuration <span> 3 months</span></a></li>
-												<li><a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a></li>
+												<li><a href="#">Trainer’s Name <span><?php echo $result['fullName'] ; ?></span></a></li>
+												<li><a href="#">Course Fee <span><?php echo $result['price'] ; ?></span></a></li>
+												<li><a href="#">Deuration <span><?php echo $result['duration'] ; ?></span></a></li>
+												<li><a href="#">Start Date <span><?php echo $result['startDate'] ; ?></span></a></li>
 											</ul>
 									</div>		                                             				
 								</div>
@@ -154,7 +168,8 @@
         			</div>
         		</div>
         	</div>
-        </section>
+		</section>
+					<?php } ?>
         <!--================End Course Details Area =================-->
         
         <!--================ start footer Area  =================-->	

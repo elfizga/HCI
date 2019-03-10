@@ -53,7 +53,7 @@
 
     <!--================Header Menu Area =================-->
 
-    <header class="header_area">
+    <header class="header_area" id="header_area">
 
       <div class="main_menu">
 
@@ -659,7 +659,6 @@ include 'includes/footer.php';
      });
    });
 </script>
-
 
     </body>
 </html>

@@ -30,6 +30,27 @@ a {
 .row.m0 {
   margin: 0px; }
 
+  .scroll-to-top span{
+    color: #ffffff;
+  }
+  .scroll-to-top{
+    position:fixed;
+    bottom:15px;
+    right:15px;
+    font-size:18px;
+    line-height:53px;
+  
+    color: #3f8f1b;
+    text-align:center;
+    z-index:100;
+    cursor:pointer;
+    
+    border-radius: 50%;
+   
+  }
+ 
+ 
+
 body {
   line-height: 24px;
   font-size: 14px;

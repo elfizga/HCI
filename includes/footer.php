@@ -64,8 +64,13 @@
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-dribbble"></i></a>
                         <a href="#"><i class="fa fa-behance"></i></a>
+
                     </div>
                 </div>
+                <div  class="scroll-to-top scroll-to-target"><a href="#header_area"><i class="lnr lnr-chevron-up"></i></a></div>
             </div>
+           
         </footer>
+      
+        
 		

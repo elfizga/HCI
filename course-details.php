@@ -85,7 +85,8 @@
 					$id=$_GET['courseID'];
 					$sql = " 
 					SELECT 
-                    courses.ID AS courseID, courses.name , courses.price , courses.duration , courses.startDate , trainer.fullName 
+					courses.ID AS courseID, courses.name , courses.price , courses.duration ,
+					courses.startDate , courses.description , courses.objectives , trainer.fullName 
                     FROM courses 
                     INNER JOIN trainer ON courses.trainerID = trainer.ID
 					WHERE courses.ID = ? ";
@@ -114,14 +115,12 @@
 						<div class="tab-content" id="myTabContent">
 							<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
 								<div class="objctive_text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+									<p><?php echo $result['description'];?></p>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 								<div class="objctive_text">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+									<p><?php echo $result['objectives'];?></p>
 								</div>
 							</div>
 							<div class="tab-pane fade show active" id="comments" role="tabpanel" aria-labelledby="comments-tab">

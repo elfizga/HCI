@@ -11,12 +11,13 @@
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
-  height: 42px;
+  height: 40px;
   line-height: 40px;
   outline: none;
   padding-left: 18px;
-  padding-right: 30px;
+  padding-right: 105px;
   position: relative;
+  top: 30px;
   text-align: left !important;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -118,7 +119,7 @@
     min-height: 40px;
     outline: none;
     padding-left: 18px;
-    padding-right: 29px;
+    padding-right: 105px;
     text-align: left;
     -webkit-transition: all 0.2s;
     transition: all 0.2s; }

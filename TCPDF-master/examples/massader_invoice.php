@@ -53,13 +53,13 @@ $pdf->SetFont('dejavusans', '', 15, '', true);
 $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 // Set some content to print
-$html = <<<EOD
-
+global $price ;
+$html = ' 
 <span style="text-align:center;">
 <img src="newlogo.png" style="width:180px ; height:60px;">
-</span>
+</span> 
 <div style="font-size: 15px;
-	 font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color: #555;">
+	 font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;color: #555;">
 	 <br>
         <table style="width: 100%;">
             <tr>
@@ -85,7 +85,7 @@ $html = <<<EOD
 								Invoice Code : #116 <br>
 							</td>
                             <td style="text-align: right ;">
-                                COMPANY NAME<br>
+                                Company NAME <br> 
                                 DEPARTMENT NAME <br>
                                 COMPANY EMAIL
                             </td>
@@ -150,11 +150,11 @@ $html = <<<EOD
                 </td>
             </tr>   
         </table>
-    </div>
-EOD;
+    </div>' ;
+
 // Print text using writeHTMLCell() 
 
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 0 , 0, true, '', true);
+$pdf->writeHTML($html, true , 0, true, 0);
 // Close and output PDF document
 $pdf->Output('massader.pdf', 'I'); 
 

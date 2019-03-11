@@ -1,16 +1,16 @@
 <?php
 include "connect.php" ;
-
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $theID=$_POST["theID"];
-    $price=$_POST["price"];
-    $title=$_POST["title"];
-    $company_name=$_POST["company_name"];
-    $dep_name=$_POST["dep_name"];
-    $email=$_POST["EMAIL"];
-    $trainees=$_POST["trainees"];
-    $phone=$_POST["phone"];
-    $address=$_POST["address"];
+    $theID = $_POST["theID"];
+    $price = $_POST["price"];
+    $title = $_POST["title"];
+    $company_name = $_POST["company_name"];
+    $dep_name = $_POST["dep_name"];
+    $email = $_POST["EMAIL"];
+    $trainees = $_POST["trainees"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    $date = date("Y-m-d");
+    $total = $price * $trainees ;
       
     global $con;
        $query = $con->prepare("INSERT INTO enrollment
@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
    $query->execute(
         array( $company_name , $dep_name , $email , $phone , $address , $trainees ));
-   }
+   $invoice_id = $con->lastInsertId();
+
 // Include the main TCPDF library (search for installation path).
 require_once('tcpdf_include.php');
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -52,9 +53,7 @@ $pdf->setFontSubsetting(true);
 $pdf->SetFont('dejavusans', '', 15, '', true);
 $pdf->AddPage();
 $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
-// Set some content to print
-global $price ;
-$html = ' 
+$html = <<<EOD
 <span style="text-align:center;">
 <img src="newlogo.png" style="width:180px ; height:60px;">
 </span> 
@@ -81,13 +80,13 @@ $html = '
 						<tr>
 							<td>
 								Course Invoice <br>
-								Created: January 1, 2015<br>
-								Invoice Code : #116 <br>
+								Created: $date <br>
+								Invoice Code : #$invoice_id <br>
 							</td>
                             <td style="text-align: right ;">
-                                Company NAME <br> 
-                                DEPARTMENT NAME <br>
-                                COMPANY EMAIL
+                                $company_name <br> 
+                                $dep_name <br>
+                                $email
                             </td>
                             
 						</tr>
@@ -104,7 +103,7 @@ $html = '
 						</tr>
                         <tr>
                             <td>
-                                The Course Name
+                                $title
                             </td>
                             <td style="text-align:right;">
                                 OFFLINE
@@ -126,7 +125,7 @@ $html = '
                                 COURSE PRICE
                             </td>
                             <td style="text-align:right;">
-                                $300.00
+                                $$price
                             </td>
                         </tr>
                         <tr>
@@ -134,7 +133,7 @@ $html = '
                                 NUMBER OF TRAINEES
                             </td>
                             <td style="text-align:right;">
-								44
+								$trainees
 							</td>
 						</tr>
 						
@@ -143,18 +142,17 @@ $html = '
 							<td></td>
 							<td style=" font-weight: bold;">
 								<br>
-							   Total: $344.00
+							   Total: $$total
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>   
         </table>
-    </div>' ;
-
+    </div> 
+EOD;
 // Print text using writeHTMLCell() 
-
-$pdf->writeHTML($html, true , 0, true, 0);
+$pdf->writeHTML($html, true, false, false, false);
 // Close and output PDF document
 $pdf->Output('massader.pdf', 'I'); 
 

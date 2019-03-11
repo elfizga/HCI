@@ -342,7 +342,7 @@ echo '</tr>';
 
 }
 ?>
-
+<?php }} ?>
           </tbody>
 
         </table>
@@ -351,10 +351,10 @@ echo '</tr>';
 
     </div>
 
-    <?php }} ?>
+    
 
   </section>
-
+  
   <div class="asideButton">
 
     <button type="button" class="btn btn-light" style="color:green; background-color:white;" 

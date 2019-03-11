@@ -109,7 +109,7 @@
 										<a href="img/elements/g8.jpg" class="img-gal">
 											<div class="single-gallery-image" style="background: url(img/elements/g8.jpg);">
 												<div class="hover_text">
-													<a class="cat" href="course-details.php?courseID=<?php echo $result['courseID'];?>"><?php echo $result['price'];?></a>
+													<a class="cat" href="course-details.php?courseID=<?php echo $result['courseID'];?>"><?php echo $result['price'];?>$</a>
 													<a href="course-details.php?courseID=<?php echo $result['courseID'];?>"><h4><?php echo $result['name'];?></h4></a>
 													<ul class="list">
 													<li><a href="course-details.php?courseID=<?php echo $result['courseID'];?>"><i class="lnr lnr-user"></i> T. <?php echo $result['fullName'];?></a></li></ul>

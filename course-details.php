@@ -128,7 +128,7 @@
 									<div class="c_details_list">
 											<ul class="list">
 												<li><a href="#">Trainer’s Name <span><?php echo $result['fullName'] ; ?></span></a></li>
-												<li><a href="#">Course Fee <span><?php echo $result['price'] ; ?></span></a></li>
+												<li><a href="#">Course Fee <span><?php echo $result['price'] ; ?>$</span></a></li>
 												<li><a href="#">Deuration <span><?php echo $result['duration'] ; ?></span></a></li>
 												<li><a href="#">Start Date <span><?php echo $result['startDate'] ; ?></span></a></li>
 											</ul>
@@ -140,7 +140,16 @@
         			<div class="col-lg-4">
         				<div class="c_details_list">
 							<h2 style="text-align:center;">Enroll the Course</h2>
-        					<form>
+        					<form action="TCPDF-master/examples/massader_invoice.php" method="post">
+								<div class="mt-10">
+									<input type="hidden" value="<?php echo $id ; ?>" name="theID" />
+								</div>
+								<div class="mt-10">
+									<input type="hidden" value="<?php echo $result['price'] ; ?>" name="price" />
+								</div>
+								<div class="mt-10">
+									<input type="hidden" value="<?php echo $result['name'] ; ?>" name="title" />
+								</div>
 								<div class="mt-10">
 									<input type="text" name="company_name" placeholder="Company Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Company Name'" required class="single-input">
 								</div>
@@ -160,9 +169,11 @@
 									<div class="icon"><i class="fa fa-thumb-tack" aria-hidden="true"></i></div>
 									<input type="text" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" required class="single-input">
 								</div>
+								<div class="mt-10">
+									<button type="submit" class="main_btn" style="width:100%">Enroll Now</button>
+								</div>
 								<br>
 							</form>
-        					<a class="main_btn" href="#">Enroll Now</a>
         				</div>
         			</div>
         		</div>

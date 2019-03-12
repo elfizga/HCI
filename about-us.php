@@ -22,8 +22,8 @@
     <body>
         
         <!--================Header Menu Area =================-->
-        <header class="header_area">
-				<div class="main_menu">
+        <header class="header_area" id="header_area">
+				<div class="main_menu ">
 					<nav class="navbar navbar-expand-lg navbar-light">
 						<div class="container">
 							<!-- Brand and toggle get grouped for better mobile display -->
@@ -61,7 +61,7 @@
 			<!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
-        <section class="banner_area">
+        <section class="banner_area stricky">
             <div class="banner_inner d-flex align-items-center">
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">

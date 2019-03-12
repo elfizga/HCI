@@ -2,7 +2,9 @@
 
 
 <?php include "includes/connect.php";
-
+if (isset($_SESSION['userid'])) {
+  $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
+  
 ?>
 
 <!doctype html>
@@ -298,18 +300,11 @@ if(isset($_SESSION['userid']) && $_SESSION['userid'] > 0) { ?>
             <?php 
 
 $sql = "
-
 SELECT 
-
-courses.ID AS courseID, courses.name , courses.price , trainer.fullName , courses.duration,
-
-courses.startDate, courses.description , courses.objectives
+courses.* , trainer.fullName 
 
 FROM courses 
-
-INNER JOIN trainer ON courses.trainerID = trainer.ID
-
-ORDER BY courseID DESC ";
+INNER JOIN trainer ON courses.trainerID = trainer.ID ";
 
 global $con;
 
@@ -329,7 +324,7 @@ foreach($items as $item) {
 
 echo '<tr>';
 
-echo '<th scope="row">'. $item['courseID'] .'</th>';
+echo '<th scope="row">'. $item['ID'] .'</th>';
 
 echo '<td>'. $item['name'] .'</td>';
 
@@ -341,14 +336,13 @@ echo '<td>'. $item['duration'] .'</td>';
 
 echo '<td>'. $item['startDate'] .'</td>';
 
-echo "<td><button type='button' class='delrequest btn  btn-link btn-sm' 
-
-data-id='". $item['courseID'] ."'> <i class='lnr lnr-cross-circle' id='iconx'></i> </button> </td>";
+echo "<td><button type='button' class='delrequest btn btn-link btn-sm' data-id='". $item['ID'] ."'> <i class='lnr lnr-cross-circle' id='iconx'></i> </button> </td>";
 
 echo '</tr>';
 
-}?>
-
+}
+?>
+<?php }} ?>
           </tbody>
 
         </table>
@@ -357,15 +351,15 @@ echo '</tr>';
 
     </div>
 
-    <?php } ?>
+    
 
   </section>
-
+  
   <div class="asideButton">
 
     <button type="button" class="btn btn-light" style="color:green; background-color:white;" 
 
-            data-toggle="modal" data-target="#AddModal" data-whatever="@mdo">Add Course
+            data-toggle="modal" data-target="#AddModal" >Add Course
 
     </button>
 
@@ -622,7 +616,8 @@ include 'includes/footer.php';
    $(document).ready(function(){
      $(".delrequest").click(function(){
        var ths = $(this);
-       var thId = $(".delrequest").data("id");
+       var thId = $(this).data("id");
+       console.log(thId);
        Swal({
         title: ' are you sure?',
         text: " You can't get this record back once you hit yes",
@@ -634,12 +629,13 @@ include 'includes/footer.php';
         cancelButtonText: '  close '
         }).then((result) => {
         if (result.value) {
-
+         
        $.ajax({
          url: "delete.php",
          data: {ID : thId},
          type: 'POST'
        })
+      
        .done(function(data){
          ths.parent("td").parent("tr").fadeOut(600, function(){
            ths.remove();
@@ -648,7 +644,7 @@ include 'includes/footer.php';
             ' you have deleted this record successfully',
             'success' )
          });
-        
+         
        })
        .fail(function(data){
           alert("error");

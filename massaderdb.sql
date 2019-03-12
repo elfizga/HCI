@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 09:47 PM
+-- Generation Time: Mar 12, 2019 at 07:48 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -53,7 +53,7 @@ CREATE TABLE `courses` (
   `description` text NOT NULL,
   `objectives` text NOT NULL,
   `trainerID` int(11) NOT NULL,
-  `price` varchar(70) NOT NULL,
+  `price` int(70) NOT NULL,
   `duration` varchar(70) NOT NULL,
   `startDate` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -63,8 +63,9 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`ID`, `name`, `description`, `objectives`, `trainerID`, `price`, `duration`, `startDate`) VALUES
-(1, 'course 1', 'description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 ', 'objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 ', 1, '600$', '3 months', '2 may 2019'),
-(2, 'course 2 ', 'description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 ', 'objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 ', 1, '699$', '8 weeks', '16-11-2019');
+(1, 'course 1', 'description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 description 1 ', 'objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 objectives 1 ', 1, 600, '3 months', '2 may 2019'),
+(2, 'course 2 ', 'description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 description 2 ', 'objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 objectives 2 ', 1, 699, '8 weeks', '16-11-2019'),
+(3, 'course 3', 'desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ', 'objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives objectives', 2, 700, '7 months', '2019-03-16');
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,8 @@ CREATE TABLE `trainer` (
 --
 
 INSERT INTO `trainer` (`ID`, `fullName`, `email`, `phone`) VALUES
-(1, 'Lazord El-Fizga', 'l.el-fizga@uot.edu.ly', '0940000000');
+(1, 'Lazord El-Fizga', 'l.el-fizga@uot.edu.ly', '0940000000'),
+(2, 'Muna Al-Boashi', 'muna@gmail.com', '0950000000');
 
 --
 -- Indexes for dumped tables
@@ -145,19 +147,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `trainer`
 --
 ALTER TABLE `trainer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -28,11 +28,11 @@
                         <div class="single-footer-widget tp_widgets">
                            <h6 class="footer_title">Quick Links</h6>
                             <ul class="list">
-                            	<li><a href="#">Home Page</a></li>
-                            	<li><a href="#">About Us</a></li>
-                            	<li><a href="#">Our Courses</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Contact Us</a></li>
+                            	<li><a href="./index.php">Home Page</a></li>
+                            	<li><a href="./about-us.php">About Us</a></li>
+                            	<li><a href="./courses.php">Our Courses</a></li>
+								<li><a href="./elements.php">Services</a></li>
+								<li><a href="./contact.php">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
